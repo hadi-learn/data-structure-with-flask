@@ -74,7 +74,7 @@ def get_all_user_descending():
             }
         )
 
-    return jsonify(all_user_ll.to_array())
+    return jsonify(all_user_ll.to_list()), 200
 
 @app.route("/user/ascending_id", methods=["GET"])
 def get_all_user_ascending():
