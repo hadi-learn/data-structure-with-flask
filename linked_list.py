@@ -32,6 +32,12 @@ class LinkedList:
 # ll.print_ll()
 
     def insert_beginning(self, data):
+        # this if statement to keep track on the last_node to replace the while loop from insert_at_end method
+        # so that the insert_at_end can be executed cleanly
+        if self.head is None:
+            self.head = Node(data, None)
+            self.last_node = self.head
+
         new_node = Node(data, self.head)
         self.head = new_node
 
@@ -46,19 +52,21 @@ class LinkedList:
         if self.head is None:
             self.insert_beginning(data)
 
-        if self.last_node is None:
-            node = self.head
-            while node.next_node:
-                node_before = node
-                node = node.next_node
-                print("iter", node.data, "-- node before = ", node_before.data)
-
-            node.next_node = Node(data, None)
-            self.last_node = node.next_node
-
-        else:
-            self.last_node.next_node = Node(data, None)
-            self.last_node = self.last_node.next_node
+        #### The whole section below can be deleted after adding an if statement on method insert_beginning
+        #### to keep track on the last_node
+        # if self.last_node is None:
+        #     node = self.head
+        #     while node.next_node:
+        #         node_before = node  # extra code to check the node before then include it on print statement
+        #         node = node.next_node
+        #         print("iter", node.data, "-- node before = ", node_before.data)
+        #
+        #     node.next_node = Node(data, None)
+        #     self.last_node = node.next_node
+        #
+        # else:
+        self.last_node.next_node = Node(data, None)  # can be directly executed because the last_node is known
+        self.last_node = self.last_node.next_node
 
 ll = LinkedList()
 ll.insert_beginning("data1")
@@ -72,6 +80,6 @@ ll.insert_beginning("data8")
 ll.insert_beginning("data9")
 
 ll.insert_at_end("end")
-# ll.insert_at_end("end2")
+ll.insert_at_end("end2")
 
 ll.print_ll()
