@@ -48,6 +48,7 @@ class LinkedList:
         if self.head is None:
             self.head = Node(data, None)
             self.last_node = self.head
+            return
 
         new_node = Node(data, self.head)
         self.head = new_node
@@ -62,6 +63,7 @@ class LinkedList:
     def insert_at_end(self, data):
         if self.head is None:
             self.insert_beginning(data)
+            return
 
         #### The whole section below can be deleted after adding an if statement on method insert_beginning
         #### to keep track on the last_node
