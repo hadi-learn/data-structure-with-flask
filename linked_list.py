@@ -8,6 +8,17 @@ class LinkedList:
         self.head = None
         self.last_node = None
 
+    def to_array(self):
+        arr = []
+        if self.head is None:
+            return arr
+
+        node = self.head
+        while node:
+            arr.append(node.data)
+            node = node.next_node
+        return arr
+
     def print_ll(self):
         ll_string = ""
         node = self.head
@@ -68,18 +79,19 @@ class LinkedList:
         self.last_node.next_node = Node(data, None)  # can be directly executed because the last_node is known
         self.last_node = self.last_node.next_node
 
-ll = LinkedList()
-ll.insert_beginning("data1")
-ll.insert_beginning("data2")
-ll.insert_beginning("data3")
-ll.insert_beginning("data4")
-ll.insert_beginning("data5")
-ll.insert_beginning("data6")
-ll.insert_beginning("data7")
-ll.insert_beginning("data8")
-ll.insert_beginning("data9")
-
-ll.insert_at_end("end")
-ll.insert_at_end("end2")
-
-ll.print_ll()
+##### example of using this module
+# ll = LinkedList()
+# ll.insert_beginning("data1")
+# ll.insert_beginning("data2")
+# ll.insert_beginning("data3")
+# ll.insert_beginning("data4")
+# ll.insert_beginning("data5")
+# ll.insert_beginning("data6")
+# ll.insert_beginning("data7")
+# ll.insert_beginning("data8")
+# ll.insert_beginning("data9")
+#
+# ll.insert_at_end("end")
+# ll.insert_at_end("end2")
+#
+# ll.print_ll()
