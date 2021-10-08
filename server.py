@@ -164,9 +164,10 @@ def create_blog_post(user_id):
 def get_all_blog_posts(user_id):
     pass
 
-@app.route("/blog_post/<blog_post_id>", methods=["GET"])
+@app.route("/blog_post/<int:blog_post_id>", methods=["GET"])
 def get_one_blog_post(blog_post_id):
-    pass
+    blog_posts = BlogPost.query.all()
+    random.shuffle(blog_posts)
 
 @app.route("/blog_post/<blog_post_id>", methods=["DELETE"])
 def delete_blog_post(blog_post_id):
