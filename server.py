@@ -6,6 +6,8 @@ from sqlalchemy import event
 from sqlalchemy.engine import Engine
 import linked_list
 import hash_table
+import binary_search_tree
+import random
 
 # app
 app = Flask(__name__)
@@ -160,7 +162,7 @@ def create_blog_post(user_id):
     db.session.commit()
     return jsonify({"message": "new blog post created"})
 
-@app.route("/blog_post/<int:user_id>", methods=["GET"])
+@app.route("/user/<int:blog_post_id>", methods=["GET"])
 def get_all_blog_posts(user_id):
     pass
 
@@ -168,6 +170,24 @@ def get_all_blog_posts(user_id):
 def get_one_blog_post(blog_post_id):
     blog_posts = BlogPost.query.all()
     random.shuffle(blog_posts)
+
+    bst = binary_search_tree.BinarySearchTree()
+
+    for post in blog_posts:
+        bst.insert({
+            "id": post.id,
+            "title": post.title,
+            "body": post.body,
+            "date": post.date,
+            "user_id": post.user_id,
+        })
+
+    post = bst.search(blog_post_id)
+
+    if not post:
+        return jsonify({"message": "post not found"}), 400
+
+    return jsonify(post), 200
 
 @app.route("/blog_post/<blog_post_id>", methods=["DELETE"])
 def delete_blog_post(blog_post_id):
