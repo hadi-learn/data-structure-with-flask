@@ -31,7 +31,8 @@ class User(db.Model):
     email = db.Column(db.String(100))
     address = db.Column(db.String(200))
     phone = db.Column(db.String(50))
-    posts = db.relationship("BlogPost", cascade="all, delete")
+    posts = db.relationship("BlogPost") # without cascade delete will be prevented because the foreign key constraint defined before
+    # posts = db.relationship("BlogPost", cascade="all, delete")
 
 class BlogPost(db.Model):
     __tablename__ = "blog_post"

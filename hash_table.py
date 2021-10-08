@@ -15,9 +15,9 @@ class HashTable:
 
     def custom_hash(self, key):
         hash_value = 0
-        for i in key:
-            hash_value += ord(i)  # ord is a method to convert character in unicode to its corresponding decimal value
-            hash_value = (hash_value * ord(i)) % self.table_size
+        for character in key:
+            hash_value += ord(character)  # ord is a method to convert character in unicode to its corresponding decimal value
+            hash_value = (hash_value * ord(character)) % self.table_size
             return hash_value
 
     def add_key_value(self, key, value):
@@ -41,7 +41,10 @@ class HashTable:
                 if key == node.data.key:
                     return node.data.value
                 node = node.next_node
-
+            # this code only for the last node of the linked node
+            # and can only be accessed if all linked node key not equal to the key provided
+            # it will return the data value if the key match, otherwise it will execute the next line of code
+            # which will return None as there is no key matched the key provided
             if key == node.data.key:
                 return node.data.value
         return None
@@ -59,11 +62,11 @@ class HashTable:
                         )
                         node = node.next_node
                     llist_string += (
-                        str(node.data.key) + " : " + str(node.data.value) + " --> None"
+                        str(node.data.key) + " : " + str(node.data.value) + " --> " + str(node.next_node)
                     )
                     print(f"   [{i}] {llist_string}")
                 else:
-                    print(f"   [{i}] {val.data.key} : {val.data.value}")
+                    print(f"   [{i}] {val.data.key} : {val.data.value} --> {node.next_node}")
             else:
                 print(f"   [{i}] {val}")
         print("}")
