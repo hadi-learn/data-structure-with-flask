@@ -74,13 +74,13 @@ class HashTable:
 
 ######## Example test
 
-ht = HashTable(6)
-ht.add_key_value("hello", "there")
-ht.add_key_value("hello", "there")
-ht.add_key_value("hello", "there")
-ht.add_key_value("hello", "there")
-ht.add_key_value("hi", "there")
-ht.add_key_value("hi", "there")
-ht.add_key_value("just", "there")
-ht.add_key_value("go", "there")
-ht.print_table()
+# ht = HashTable(6)
+# ht.add_key_value("hello", "there")
+# ht.add_key_value("hello", "there")
+# ht.add_key_value("hello", "there")
+# ht.add_key_value("hello", "there")
+# ht.add_key_value("hi", "there")
+# ht.add_key_value("hi", "there")
+# ht.add_key_value("just", "there")
+# ht.add_key_value("go", "there")
+# ht.print_table()
