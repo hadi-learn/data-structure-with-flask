@@ -3,7 +3,9 @@ class Node:
         self.data = data
         self.next_node = next_node
 
-    def Queue(self):
+
+class Queue:
+    def __init__(self):
         self.head = None
         self.tail = None
 
